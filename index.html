@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Support Center</title>
+    <title>Parimatch Support Center</title>
     <style>
         * {
             box-sizing: border-box;
@@ -13,13 +13,13 @@
         }
 
         body {
-            background-color: #0d0d0d;
+            background-color: #0b0b0b;
             color: #ffffff;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            padding: 16px;
+            padding: 12px;
         }
 
         .container {
@@ -27,166 +27,192 @@
             max-width: 440px;
         }
 
-        /* Header Section */
-        .header {
+        /* Top Header */
+        .top-header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
+            padding-top: 6px;
         }
 
-        .brand-row {
-            display: flex;
+        .brand-pill {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
+            background-color: #161616;
+            border: 1.5px solid #d4ff00;
+            padding: 6px 14px;
+            border-radius: 30px;
             gap: 10px;
             margin-bottom: 6px;
         }
 
-        .brand-badge {
-            border: 1.5px solid #d4ff00;
-            color: #d4ff00;
-            font-weight: 800;
+        .parimatch-logo-text {
+            background-color: #d4ff00;
+            color: #000;
+            font-weight: 900;
             font-style: italic;
-            padding: 4px 12px;
-            border-radius: 6px;
-            font-size: 16px;
-            letter-spacing: 0.5px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 15px;
+            letter-spacing: -0.5px;
         }
 
-        .header-title {
-            font-size: 20px;
+        .support-text {
+            font-size: 18px;
             font-weight: 700;
+            color: #ffffff;
         }
 
-        .sub-header {
-            font-size: 12px;
-            color: #a3a3a3;
+        .sub-tagline {
+            font-size: 11px;
+            color: #9ca3af;
+            letter-spacing: 0.3px;
         }
 
-        /* Hero Banner Card */
-        .banner-card {
-            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
-            border: 1px solid #2e2e2e;
+        /* Hero Banner */
+        .hero-banner {
+            background: linear-gradient(135deg, #18181b 0%, #09090b 100%);
+            border: 1.5px solid #27272a;
             border-radius: 16px;
-            padding: 18px;
-            margin-bottom: 20px;
+            padding: 16px;
+            margin-bottom: 18px;
             position: relative;
-            overflow: hidden;
         }
 
-        .banner-content {
+        .hero-top {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
         }
 
-        .banner-text h2 {
-            color: #d4ff00;
-            font-size: 20px;
-            font-weight: 800;
-            font-style: italic;
-            line-height: 1.1;
+        .hero-brand-title {
+            display: flex;
+            align-items: center;
+            gap: 6px;
             margin-bottom: 6px;
         }
 
-        .banner-text p {
-            font-size: 11px;
-            color: #cccccc;
-            max-width: 210px;
+        .mini-logo {
+            width: 22px;
+            height: 22px;
+            background: #d4ff00;
+            border-radius: 3px;
         }
 
-        .support-avatar {
-            width: 64px;
-            height: 64px;
+        .hero-brand-title span {
+            font-size: 18px;
+            font-weight: 900;
+            font-style: italic;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-title-main {
+            color: #d4ff00;
+            font-size: 20px;
+            font-weight: 900;
+            font-style: italic;
+            line-height: 1.1;
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-desc {
+            font-size: 11px;
+            color: #d1d5db;
+            max-width: 230px;
+            line-height: 1.3;
+        }
+
+        .headset-avatar {
+            width: 60px;
+            height: 60px;
             background: #d4ff00;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #000;
-            font-weight: bold;
             font-size: 28px;
             flex-shrink: 0;
+            box-shadow: 0 0 15px rgba(212, 255, 0, 0.3);
         }
 
-        .banner-features {
+        .hero-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
-            margin-top: 16px;
+            gap: 6px;
+            margin-top: 14px;
             padding-top: 12px;
-            border-top: 1px solid #262626;
+            border-top: 1px solid #27272a;
             text-align: center;
         }
 
-        .feature-item span {
-            display: block;
-            font-size: 9px;
-            color: #b3b3b3;
-            margin-top: 4px;
-            font-weight: 600;
-        }
-
-        .feature-icon {
-            width: 28px;
-            height: 28px;
+        .hero-icon-box {
+            width: 32px;
+            height: 32px;
             background: #d4ff00;
             color: #000;
-            border-radius: 6px;
-            margin: 0 auto;
+            border-radius: 8px;
+            margin: 0 auto 4px auto;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 14px;
-            font-weight: bold;
+            font-size: 15px;
         }
 
-        .banner-footer {
-            margin-top: 12px;
+        .hero-grid span {
+            display: block;
+            font-size: 8px;
+            color: #9ca3af;
+            font-weight: 700;
+        }
+
+        .hero-footer-tags {
+            margin-top: 10px;
             font-size: 10px;
             color: #d4ff00;
+            font-weight: 700;
             display: flex;
-            gap: 10px;
-            font-weight: 600;
+            gap: 8px;
         }
 
-        /* Problems List Section */
-        .problems-section {
-            background-color: #161616;
-            border: 1px solid #d4ff00;
+        /* Problems Section */
+        .problems-wrapper {
+            background-color: #121212;
+            border: 1.5px solid #d4ff00;
             border-radius: 20px;
-            padding: 20px 14px;
+            padding: 16px 12px;
         }
 
-        .section-heading {
+        .section-header {
             text-align: center;
             color: #d4ff00;
-            font-size: 16px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            margin-bottom: 16px;
+            font-size: 15px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 14px;
         }
 
-        .problem-card {
-            background-color: #222222;
+        .problem-item {
+            background-color: #1c1c1e;
             border-radius: 14px;
-            padding: 10px;
-            margin-bottom: 12px;
+            padding: 8px;
+            margin-bottom: 10px;
             cursor: pointer;
-            transition: transform 0.15s ease;
+            transition: transform 0.1s ease;
         }
 
-        .problem-card:last-child {
+        .problem-item:last-child {
             margin-bottom: 0;
         }
 
-        .problem-card:active {
+        .problem-item:active {
             transform: scale(0.98);
         }
 
         .problem-inner {
-            background-color: #121212;
+            background-color: #111113;
             border-radius: 10px;
-            padding: 12px 14px;
+            padding: 10px 12px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -195,30 +221,47 @@
         .problem-left {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 12px;
         }
 
-        .problem-icon-box {
+        /* Exact Match Small Yellow Box Design */
+        .problem-icon-wrapper {
+            background-color: #d4ff00;
+            border-radius: 6px;
+            padding: 4px;
             width: 44px;
             height: 44px;
-            border: 1px solid #d4ff00;
-            border-radius: 8px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: #d4ff00;
-            font-size: 20px;
             flex-shrink: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
 
-        .problem-title {
+        .problem-icon-wrapper .main-sym {
+            font-size: 16px;
+            line-height: 1;
+        }
+
+        .problem-icon-wrapper .sub-label {
+            font-size: 6px;
+            font-weight: 900;
+            color: #000;
+            text-transform: uppercase;
+            letter-spacing: -0.3px;
+            margin-top: 2px;
+            white-space: nowrap;
+        }
+
+        .problem-name {
             color: #d4ff00;
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 0.4px;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
         }
 
-        .arrow {
+        .arrow-icon {
             color: #d4ff00;
             font-size: 16px;
             font-weight: bold;
@@ -229,44 +272,48 @@
 
 <div class="container">
     <!-- Top Header -->
-    <div class="header">
-        <div class="brand-row">
-            <div class="brand-badge">SUPPORT</div>
-            <div class="header-title">Center</div>
+    <div class="top-header">
+        <div class="brand-pill">
+            <div class="parimatch-logo-text">PARI<i>MATCH</i></div>
+            <div class="support-text">Support</div>
         </div>
-        <div class="sub-header">Fast • Secure • Trusted Help</div>
+        <div class="sub-tagline">Fast • Secure • Trusted Help</div>
     </div>
 
     <!-- Hero Banner -->
-    <div class="banner-card">
-        <div class="banner-content">
-            <div class="banner-text">
-                <h2>SUPPORT CENTER</h2>
-                <p>We're here to help you. Fast, safe & reliable support.</p>
+    <div class="hero-banner">
+        <div class="hero-top">
+            <div>
+                <div class="hero-brand-title">
+                    <div class="mini-logo"></div>
+                    <span>PariMatch</span>
+                </div>
+                <div class="hero-title-main">SUPPORT CENTER</div>
+                <p class="hero-desc">We're here to help you. Fast, safe & reliable support.</p>
             </div>
-            <div class="support-avatar">🎧</div>
+            <div class="headset-avatar">🎧</div>
         </div>
 
-        <div class="banner-features">
-            <div class="feature-item">
-                <div class="feature-icon">🎮</div>
-                <span>APP ISSUE</span>
+        <div class="hero-grid">
+            <div>
+                <div class="hero-icon-box">🎮</div>
+                <span>GAME PROBLEM</span>
             </div>
-            <div class="feature-item">
-                <div class="feature-icon">💳</div>
-                <span>PAYMENTS</span>
+            <div>
+                <div class="hero-icon-box">💳</div>
+                <span>DEPOSIT & WITHDRAWAL</span>
             </div>
-            <div class="feature-item">
-                <div class="feature-icon">❓</div>
+            <div>
+                <div class="hero-icon-box">❓</div>
                 <span>FAQ</span>
             </div>
-            <div class="feature-item">
-                <div class="feature-icon">💬</div>
+            <div>
+                <div class="hero-icon-box">💬</div>
                 <span>LIVE CHAT</span>
             </div>
         </div>
 
-        <div class="banner-footer">
+        <div class="hero-footer-tags">
             <span>✔ FAST</span>
             <span>• RELIABLE</span>
             <span>• 24/7 SUPPORT</span>
@@ -274,84 +321,113 @@
     </div>
 
     <!-- Select Problems Box -->
-    <div class="problems-section">
-        <div class="section-heading">SELECT PROBLEMS</div>
+    <div class="problems-wrapper">
+        <div class="section-header">SELECT PROBLEMS</div>
 
-        <div class="problem-card" onclick="selectTopic('Deposit Problem')">
+        <!-- Deposit Problem -->
+        <div class="problem-item" onclick="openSupport('Deposit Problem')">
             <div class="problem-inner">
                 <div class="problem-left">
-                    <div class="problem-icon-box">💰</div>
-                    <div class="problem-title">DEPOSIT PROBLEM</div>
+                    <div class="problem-icon-wrapper">
+                        <span class="main-sym">💰</span>
+                        <span class="sub-label">DEPOSIT</span>
+                    </div>
+                    <div class="problem-name">DEPOSIT PROBLEM</div>
                 </div>
-                <div class="arrow">❯</div>
+                <div class="arrow-icon">❯</div>
             </div>
         </div>
 
-        <div class="problem-card" onclick="selectTopic('Withdrawal Problem')">
+        <!-- Withdrawal Problem -->
+        <div class="problem-item" onclick="openSupport('Withdrawal Problem')">
             <div class="problem-inner">
                 <div class="problem-left">
-                    <div class="problem-icon-box">💳</div>
-                    <div class="problem-title">WITHDRAWAL PROBLEM</div>
+                    <div class="problem-icon-wrapper">
+                        <span class="main-sym">💳</span>
+                        <span class="sub-label">WITHDRAW</span>
+                    </div>
+                    <div class="problem-name">WITHDRAWAL PROBLEM</div>
                 </div>
-                <div class="arrow">❯</div>
+                <div class="arrow-icon">❯</div>
             </div>
         </div>
 
-        <div class="problem-card" onclick="selectTopic('Withdrawal Unlock')">
+        <!-- Withdrawal Unlock -->
+        <div class="problem-item" onclick="openSupport('Withdrawal Unlock')">
             <div class="problem-inner">
                 <div class="problem-left">
-                    <div class="problem-icon-box">🔓</div>
-                    <div class="problem-title">WITHDRAWAL UNLOCK</div>
+                    <div class="problem-icon-wrapper">
+                        <span class="main-sym">🔓</span>
+                        <span class="sub-label">UNLOCK</span>
+                    </div>
+                    <div class="problem-name">WITHDRAWAL UNLOCK</div>
                 </div>
-                <div class="arrow">❯</div>
+                <div class="arrow-icon">❯</div>
             </div>
         </div>
 
-        <div class="problem-card" onclick="selectTopic('Bonus Problem')">
+        <!-- Bonus Problem -->
+        <div class="problem-item" onclick="openSupport('Bonus Problem')">
             <div class="problem-inner">
                 <div class="problem-left">
-                    <div class="problem-icon-box">🎁</div>
-                    <div class="problem-title">BONUS PROBLEM</div>
+                    <div class="problem-icon-wrapper">
+                        <span class="main-sym">🎁</span>
+                        <span class="sub-label">BONUS</span>
+                    </div>
+                    <div class="problem-name">BONUS PROBLEM</div>
                 </div>
-                <div class="arrow">❯</div>
+                <div class="arrow-icon">❯</div>
             </div>
         </div>
 
-        <div class="problem-card" onclick="selectTopic('KYC Problem')">
+        <!-- KYC Problem -->
+        <div class="problem-item" onclick="openSupport('KYC Problem')">
             <div class="problem-inner">
                 <div class="problem-left">
-                    <div class="problem-icon-box">🪪</div>
-                    <div class="problem-title">KYC PROBLEM</div>
+                    <div class="problem-icon-wrapper">
+                        <span class="main-sym">🪪</span>
+                        <span class="sub-label">KYC</span>
+                    </div>
+                    <div class="problem-name">KYC PROBLEM</div>
                 </div>
-                <div class="arrow">❯</div>
+                <div class="arrow-icon">❯</div>
             </div>
         </div>
 
-        <div class="problem-card" onclick="selectTopic('Bank Statement Problem')">
+        <!-- Bank Statement Problem -->
+        <div class="problem-item" onclick="openSupport('Bank Statement Problem')">
             <div class="problem-inner">
                 <div class="problem-left">
-                    <div class="problem-icon-box">📄</div>
-                    <div class="problem-title">BANK STATEMENT PROBLEM</div>
+                    <div class="problem-icon-wrapper">
+                        <span class="main-sym">📄</span>
+                        <span class="sub-label">STATEMENT</span>
+                    </div>
+                    <div class="problem-name">BANK STATEMENT PROBLEM</div>
                 </div>
-                <div class="arrow">❯</div>
+                <div class="arrow-icon">❯</div>
             </div>
         </div>
 
-        <div class="problem-card" onclick="selectTopic('Live Chat')">
+        <!-- Live Chat -->
+        <div class="problem-item" onclick="openSupport('Live Chat')">
             <div class="problem-inner">
                 <div class="problem-left">
-                    <div class="problem-icon-box">🎧</div>
-                    <div class="problem-title">LIVE CHAT</div>
+                    <div class="problem-icon-wrapper">
+                        <span class="main-sym">🎧</span>
+                        <span class="sub-label">CHAT</span>
+                    </div>
+                    <div class="problem-name">LIVE CHAT</div>
                 </div>
-                <div class="arrow">❯</div>
+                <div class="arrow-icon">❯</div>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-    function selectTopic(topic) {
-        alert("Selected: " + topic);
+    function openSupport(type) {
+        alert("Selected: " + type);
+        // Agar aapko kisi doosre page par ya chat link par bhej na ho, toh window.location.href = "link"; yahan laga sakte hain.
     }
 </script>
 
