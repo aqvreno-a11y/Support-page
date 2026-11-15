@@ -4,632 +4,511 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parimatch Support Center</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
-            background-color: #0b0b0b;
+            background-color: #0d0e0e;
             color: #ffffff;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            padding: 12px;
         }
 
-        .container {
+        header {
             width: 100%;
-            max-width: 440px;
-        }
-
-        /* Top Header */
-        .top-header {
-            text-align: center;
-            margin-bottom: 16px;
-            padding-top: 6px;
-        }
-
-        .brand-pill {
-            display: inline-flex;
+            background-color: #161818;
+            padding: 16px 20px;
+            display: flex;
+            flex-direction: column;
             align-items: center;
-            background-color: #161616;
-            border: 1.5px solid #d4ff00;
-            padding: 6px 16px;
-            border-radius: 30px;
-            gap: 8px;
-            margin-bottom: 6px;
+            border-bottom: 1px solid #262929;
         }
 
-        .parimatch-badge {
-            background: #d4ff00;
-            color: #000;
+        .brand-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-badge {
+            border: 1.5px solid #f3ff00;
+            padding: 5px 12px;
+            border-radius: 8px;
             font-weight: 900;
             font-style: italic;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 13px;
-            letter-spacing: -0.5px;
-            display: inline-flex;
-            gap: 2px;
-            align-items: center;
+            color: #f3ff00;
+            letter-spacing: 0.5px;
+            font-size: 14px;
+            background: rgba(243, 255, 0, 0.05);
         }
 
-        .support-text {
-            font-size: 15px;
+        .support-title {
+            font-size: 20px;
             font-weight: 700;
             color: #ffffff;
         }
 
-        .sub-tagline {
-            font-size: 11px;
+        .tagline {
+            margin-top: 8px;
+            font-size: 12px;
             color: #9ca3af;
             letter-spacing: 0.3px;
         }
 
-        /* Premium Hero Banner */
+        .container {
+            width: 100%;
+            max-width: 480px;
+            padding: 20px 16px;
+        }
+
         .hero-banner {
-            background: linear-gradient(135deg, #18181b 0%, #09090b 100%);
-            border: 1.5px solid #27272a;
-            border-radius: 18px;
-            padding: 18px;
-            margin-bottom: 18px;
+            background: linear-gradient(135deg, #1b1e1e 0%, #111313 100%);
+            border: 1px solid #2c3030;
+            border-radius: 16px;
+            padding: 20px 18px;
+            margin-bottom: 20px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .hero-top {
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
 
-        .hero-brand-title {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            margin-bottom: 4px;
+        .hero-content {
+            max-width: 68%;
+            z-index: 1;
         }
 
-        .mini-blocks {
-            display: flex;
-            gap: 2px;
-        }
-
-        .mini-block {
-            width: 6px;
-            height: 12px;
-            background: #d4ff00;
-            transform: skewX(-15deg);
-        }
-
-        .hero-brand-title span {
-            font-size: 14px;
+        .hero-brand {
+            color: #f3ff00;
             font-weight: 900;
             font-style: italic;
-            color: #ffffff;
-            letter-spacing: -0.5px;
+            font-size: 18px;
+            margin-bottom: 2px;
         }
 
-        .hero-title-main {
-            color: #d4ff00;
-            font-size: 20px;
+        .hero-title {
+            font-size: 21px;
             font-weight: 900;
             font-style: italic;
-            line-height: 1.1;
-            margin-bottom: 6px;
             letter-spacing: 0.5px;
-            text-transform: uppercase;
+            color: #ffffff;
+            margin-bottom: 6px;
         }
 
-        .hero-desc {
-            font-size: 11px;
+        .hero-subtitle {
+            font-size: 10.5px;
             color: #d1d5db;
-            max-width: 210px;
-            line-height: 1.3;
+            margin-bottom: 14px;
         }
 
-        .hero-emblem {
-            width: 68px;
-            height: 68px;
-            background: #111;
-            border: 2px solid #d4ff00;
+        .hero-features {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .feature-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 4px;
+        }
+
+        .feature-icon {
+            width: 28px;
+            height: 28px;
+            background-color: rgba(243, 255, 0, 0.12);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
-            box-shadow: 0 0 15px rgba(212, 255, 0, 0.3);
+            color: #f3ff00;
+            font-size: 12px;
         }
 
-        .emblem-inner {
+        .feature-item span {
+            font-size: 7.5px;
+            font-weight: 700;
+            color: #9ca3af;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+
+        .hero-badges {
+            font-size: 9px;
+            font-weight: 700;
+            color: #f3ff00;
             display: flex;
-            gap: 2px;
+            align-items: center;
+            gap: 6px;
         }
 
-        .em-bar {
-            width: 8px;
-            height: 24px;
-            background: #d4ff00;
-            transform: skewX(-15deg);
+        .hero-badges span {
+            color: #9ca3af;
         }
 
-        .hero-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
-            margin-top: 16px;
-            padding-top: 14px;
-            border-top: 1px solid #27272a;
-            text-align: center;
-        }
-
-        .hero-icon-box {
-            width: 36px;
-            height: 36px;
-            background: #d4ff00;
-            border-radius: 10px;
-            margin: 0 auto 4px auto;
+        .hero-mascot {
+            width: 82px;
+            height: 82px;
+            background-color: rgba(243, 255, 0, 0.1);
+            border: 2px solid #f3ff00;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            font-size: 16px;
+            color: #f3ff00;
+            font-size: 38px;
+            z-index: 1;
+            flex-shrink: 0;
         }
 
-        .hero-grid span {
-            display: block;
-            font-size: 8px;
-            color: #9ca3af;
-            font-weight: 700;
+        .problems-section {
+            background-color: #161818;
+            border: 1px solid #3c4228;
+            border-radius: 18px;
+            padding: 20px 16px;
+            margin-bottom: 24px;
         }
 
-        .hero-footer-tags {
-            margin-top: 12px;
-            font-size: 10px;
-            color: #d4ff00;
-            font-weight: 700;
-            display: flex;
-            gap: 10px;
-        }
-
-        /* Problems Section */
-        .problems-wrapper {
-            background-color: #121212;
-            border: 1.5px solid #d4ff00;
-            border-radius: 20px;
-            padding: 16px 12px;
-            margin-bottom: 20px;
-        }
-
-        .section-header {
+        .section-heading {
             text-align: center;
-            color: #d4ff00;
-            font-size: 14px;
+            color: #f3ff00;
+            font-size: 16px;
             font-weight: 800;
-            letter-spacing: 1px;
-            margin-bottom: 14px;
+            letter-spacing: 0.8px;
+            margin-bottom: 18px;
+            text-transform: uppercase;
         }
 
-        .problem-item {
-            background-color: #1c1c1e;
+        .problem-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .problem-card {
+            background-color: #1e2121;
+            border: 1px solid #2d3131;
             border-radius: 14px;
-            padding: 8px;
-            margin-bottom: 10px;
-            cursor: pointer;
-            transition: transform 0.1s ease;
-        }
-
-        .problem-item:active {
-            transform: scale(0.98);
-        }
-
-        .problem-inner {
-            background-color: #111113;
-            border-radius: 10px;
-            padding: 10px 12px;
+            padding: 14px 16px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .problem-card:hover {
+            border-color: #f3ff00;
+            background-color: #242828;
+            transform: translateY(-1px);
         }
 
         .problem-left {
             display: flex;
             align-items: center;
+            gap: 14px;
+        }
+
+        .problem-icon-box {
+            width: 44px;
+            height: 44px;
+            background-color: rgba(243, 255, 0, 0.08);
+            border: 1px solid rgba(243, 255, 0, 0.35);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #f3ff00;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .problem-title {
+            color: #f3ff00;
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
+        }
+
+        .problem-arrow {
+            color: #f3ff00;
+            font-size: 14px;
+        }
+
+        .faq-section {
+            margin-bottom: 28px;
+        }
+
+        .faq-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 14px;
+            padding-left: 4px;
+        }
+
+        .faq-header i {
+            color: #f3ff00;
+            font-size: 18px;
+        }
+
+        .faq-header h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .faq-item {
+            background-color: #161818;
+            border: 1px solid #262929;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 15px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: #e5e7eb;
             gap: 12px;
         }
 
-        .problem-icon-wrapper {
-            background-color: #d4ff00;
-            border-radius: 6px;
-            padding: 4px;
-            width: 42px;
-            height: 42px;
+        .faq-question i {
+            color: #f3ff00;
+            font-size: 12px;
+            transition: transform 0.2s;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 0 16px 15px 16px;
+            font-size: 12.5px;
+            color: #9ca3af;
+            line-height: 1.5;
+            border-top: 1px solid #222525;
+            padding-top: 10px;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        footer {
+            width: 100%;
+            padding: 16px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-        }
-
-        .problem-icon-wrapper .sub-label {
-            font-size: 6px;
-            font-weight: 900;
-            color: #000;
-            text-transform: uppercase;
-            letter-spacing: -0.3px;
-            margin-top: 2px;
-        }
-
-        .problem-name {
-            color: #d4ff00;
-            font-size: 12px;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-        }
-
-        .arrow-icon {
-            color: #d4ff00;
-            font-size: 16px;
-            font-weight: bold;
-        }
-
-        /* Views */
-        .view-section { display: none; }
-        .active-view { display: block; }
-
-        /* Form Styling */
-        .form-header-bar {
-            display: flex;
-            align-items: center;
             gap: 12px;
-            margin-bottom: 16px;
+            margin-top: auto;
+            margin-bottom: 12px;
         }
 
-        .back-btn {
-            background: #d4ff00;
-            color: #000;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
+        .footer-logo {
+            width: 42px;
+            height: 42px;
+            background-color: #161818;
+            border: 1px solid #2c3030;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
-            font-size: 18px;
-            cursor: pointer;
-            border: none;
+            color: #f3ff00;
+            font-weight: 900;
+            font-size: 20px;
         }
 
-        .form-container {
-            background-color: #121212;
-            border: 1.5px solid #d4ff00;
-            border-radius: 20px;
-            padding: 20px 16px;
-        }
-
-        .complaint-heading-box {
-            font-size: 18px;
-            font-weight: 800;
-            color: #fff;
-            margin-bottom: 4px;
-        }
-
-        .complaint-sub {
+        .copyright {
             font-size: 11px;
             color: #9ca3af;
-            margin-bottom: 16px;
-        }
-
-        .selected-issue-pill {
-            background-color: #d4ff00;
-            color: #000;
-            font-weight: 900;
-            font-size: 13px;
-            padding: 12px;
-            border-radius: 12px;
             text-align: center;
-            margin-bottom: 18px;
-            text-transform: uppercase;
-        }
-
-        .input-group {
-            margin-bottom: 14px;
-        }
-
-        .input-group label {
-            display: block;
-            font-size: 11px;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 6px;
-        }
-
-        .input-group input, .input-group select, .input-group textarea {
-            width: 100%;
-            background-color: #1c1c1e;
-            border: 1px solid #27272a;
-            border-radius: 10px;
-            padding: 12px;
-            color: #fff;
-            font-size: 12px;
-            outline: none;
-        }
-
-        .submit-btn {
-            width: 100%;
-            background-color: #d4ff00;
-            color: #000;
-            font-weight: 900;
-            font-size: 13px;
-            padding: 14px;
-            border-radius: 12px;
-            border: none;
-            cursor: pointer;
-            margin-top: 10px;
-            text-transform: uppercase;
-        }
-
-        .footer {
-            text-align: center;
-            font-size: 9px;
-            color: #6b7280;
-            padding: 10px 0 20px 0;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-
-    <!-- MAIN VIEW -->
-    <div id="main-view" class="view-section active-view">
-        <div class="top-header">
-            <div class="brand-pill">
-                <div class="parimatch-badge">PARI<i>MATCH</i></div>
-                <div class="support-text">Support</div>
-            </div>
-            <div class="sub-tagline">Fast • Secure • Trusted Help</div>
+    <header>
+        <div class="brand-box">
+            <div class="logo-badge">PARIMATCH</div>
+            <span class="support-title">Support</span>
         </div>
+        <div class="tagline">Fast &bull; Secure &bull; Trusted Help</div>
+    </header>
 
+    <div class="container">
         <div class="hero-banner">
-            <div class="hero-top">
-                <div>
-                    <div class="hero-brand-title">
-                        <div class="mini-blocks">
-                            <div class="mini-block"></div>
-                            <div class="mini-block"></div>
-                        </div>
-                        <span>PARIMATCH</span>
+            <div class="hero-content">
+                <div class="hero-brand">PariMatch</div>
+                <div class="hero-title">SUPPORT CENTER</div>
+                <div class="hero-subtitle">We're here to help you. Fast, safe & reliable support.</div>
+                
+                <div class="hero-features">
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fa-solid fa-gamepad"></i></div>
+                        <span>GAME PROBLEM</span>
                     </div>
-                    <div class="hero-title-main">SUPPORT CENTER</div>
-                    <p class="hero-desc">We're here to help you. Fast, safe & reliable support.</p>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fa-solid fa-wallet"></i></div>
+                        <span>DEPOSIT &<br>WITHDRAWAL</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fa-solid fa-question"></i></div>
+                        <span>FAQ</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fa-regular fa-comment-dots"></i></div>
+                        <span>LIVE CHAT</span>
+                    </div>
                 </div>
-                <div class="hero-emblem">
-                    <div class="emblem-inner">
-                        <div class="em-bar"></div>
-                        <div class="em-bar"></div>
-                    </div>
+
+                <div class="hero-badges">
+                    <i class="fa-solid fa-circle-check"></i> <span>FAST &bull; RELIABLE &bull; 24/7 SUPPORT</span>
                 </div>
             </div>
 
-            <div class="hero-grid">
-                <div>
-                    <div class="hero-icon-box" onclick="openForm('Game Problem')">🎮</div>
-                    <span>GAME PROBLEM</span>
-                </div>
-                <div>
-                    <div class="hero-icon-box" onclick="openForm('Deposit & Withdrawal')">💳</div>
-                    <span>PAYMENTS</span>
-                </div>
-                <div>
-                    <div class="hero-icon-box" onclick="openForm('FAQ')">❓</div>
-                    <span>FAQ</span>
-                </div>
-                <div>
-                    <div class="hero-icon-box" onclick="openForm('Live Chat')">💬</div>
-                    <span>LIVE CHAT</span>
-                </div>
-            </div>
-
-            <div class="hero-footer-tags">
-                <span>✔ FAST</span>
-                <span>• RELIABLE</span>
-                <span>• 24/7 SUPPORT</span>
+            <div class="hero-mascot">
+                <i class="fa-solid fa-headset"></i>
             </div>
         </div>
 
-        <div class="problems-wrapper">
-            <div class="section-header">SELECT PROBLEMS</div>
-
-            <div class="problem-item" onclick="openForm('Deposit Problem')">
-                <div class="problem-inner">
+        <div class="problems-section">
+            <h2 class="section-heading">SELECT PROBLEMS</h2>
+            
+            <div class="problem-list">
+                <a href="deposit/index.html" class="problem-card">
                     <div class="problem-left">
-                        <div class="problem-icon-wrapper">
-                            <span style="font-size: 16px;">💰</span>
-                            <span class="sub-label">DEPOSIT</span>
-                        </div>
-                        <div class="problem-name">DEPOSIT PROBLEM</div>
+                        <div class="problem-icon-box"><i class="fa-solid fa-circle-arrow-down"></i></div>
+                        <span class="problem-title">DEPOSIT PROBLEM</span>
                     </div>
-                    <div class="arrow-icon">❯</div>
-                </div>
+                    <i class="fa-solid fa-chevron-right problem-arrow"></i>
+                </a>
+
+                <a href="withdrawal/index.html" class="problem-card">
+                    <div class="problem-left">
+                        <div class="problem-icon-box"><i class="fa-solid fa-circle-arrow-up"></i></div>
+                        <span class="problem-title">WITHDRAWAL PROBLEM</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right problem-arrow"></i>
+                </a>
+
+                <a href="unlock-withdrawal/index.html" class="problem-card">
+                    <div class="problem-left">
+                        <div class="problem-icon-box"><i class="fa-solid fa-unlock-keyhole"></i></div>
+                        <span class="problem-title">WITHDRAWAL UNLOCK</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right problem-arrow"></i>
+                </a>
+
+                <a href="bonus/index.html" class="problem-card">
+                    <div class="problem-left">
+                        <div class="problem-icon-box"><i class="fa-solid fa-gift"></i></div>
+                        <span class="problem-title">BONUS PROBLEM</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right problem-arrow"></i>
+                </a>
+
+                <a href="kyc/index.html" class="problem-card">
+                    <div class="problem-left">
+                        <div class="problem-icon-box"><i class="fa-regular fa-id-card"></i></div>
+                        <span class="problem-title">KYC PROBLEM</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right problem-arrow"></i>
+                </a>
+
+                <a href="bank-statement/index.html" class="problem-card">
+                    <div class="problem-left">
+                        <div class="problem-icon-box"><i class="fa-solid fa-building-columns"></i></div>
+                        <span class="problem-title">BANK STATEMENT PROBLEM</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right problem-arrow"></i>
+                </a>
+
+                <a href="live-chat/index.html" class="problem-card">
+                    <div class="problem-left">
+                        <div class="problem-icon-box"><i class="fa-solid fa-headset"></i></div>
+                        <span class="problem-title">LIVE CHAT</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right problem-arrow"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <div class="faq-header">
+                <i class="fa-regular fa-circle-question"></i>
+                <h3>Quick Answers</h3>
             </div>
 
-            <div class="problem-item" onclick="openForm('Withdrawal Problem')">
-                <div class="problem-inner">
-                    <div class="problem-left">
-                        <div class="problem-icon-wrapper">
-                            <span style="font-size: 16px;">💳</span>
-                            <span class="sub-label">WITHDRAW</span>
-                        </div>
-                        <div class="problem-name">WITHDRAWAL PROBLEM</div>
+            <div class="faq-list">
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Why is my deposit not showing in game balance?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
                     </div>
-                    <div class="arrow-icon">❯</div>
+                    <div class="faq-answer">
+                        Deposits usually reflect within 5 to 15 minutes. If it is delayed due to bank server issues, please submit your UTR / Transaction ID in the Deposit Problem section for quick resolution.
+                    </div>
                 </div>
-            </div>
 
-            <div class="problem-item" onclick="openForm('Withdrawal Unlock')">
-                <div class="problem-inner">
-                    <div class="problem-left">
-                        <div class="problem-icon-wrapper">
-                            <span style="font-size: 16px;">🔓</span>
-                            <span class="sub-label">UNLOCK</span>
-                        </div>
-                        <div class="problem-name">WITHDRAWAL UNLOCK</div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>How long does withdrawal take?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
                     </div>
-                    <div class="arrow-icon">❯</div>
+                    <div class="faq-answer">
+                        Standard withdrawals are processed within 15 minutes to 2 hours depending on your selected payment method (UPI, Bank Transfer, or E-Wallet).
+                    </div>
                 </div>
-            </div>
 
-            <div class="problem-item" onclick="openForm('Bonus Problem')">
-                <div class="problem-inner">
-                    <div class="problem-left">
-                        <div class="problem-icon-wrapper">
-                            <span style="font-size: 16px;">🎁</span>
-                            <span class="sub-label">BONUS</span>
-                        </div>
-                        <div class="problem-name">BONUS PROBLEM</div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Is my password safe here?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
                     </div>
-                    <div class="arrow-icon">❯</div>
-                </div>
-            </div>
-
-            <div class="problem-item" onclick="openForm('KYC Problem')">
-                <div class="problem-inner">
-                    <div class="problem-left">
-                        <div class="problem-icon-wrapper">
-                            <span style="font-size: 16px;">🪪</span>
-                            <span class="sub-label">KYC</span>
-                        </div>
-                        <div class="problem-name">KYC PROBLEM</div>
+                    <div class="faq-answer">
+                        Your account security is important. Never share your password with anyone, and ensure your connection is secure before submitting any support requests.
                     </div>
-                    <div class="arrow-icon">❯</div>
-                </div>
-            </div>
-
-            <div class="problem-item" onclick="openForm('Bank Statement Problem')">
-                <div class="problem-inner">
-                    <div class="problem-left">
-                        <div class="problem-icon-wrapper">
-                            <span style="font-size: 16px;">📄</span>
-                            <span class="sub-label">STATEMENT</span>
-                        </div>
-                        <div class="problem-name">BANK STATEMENT PROBLEM</div>
-                    </div>
-                    <div class="arrow-icon">❯</div>
-                </div>
-            </div>
-
-            <div class="problem-item" onclick="openForm('Live Chat')">
-                <div class="problem-inner">
-                    <div class="problem-left">
-                        <div class="problem-icon-wrapper">
-                            <span style="font-size: 16px;">🎧</span>
-                            <span class="sub-label">CHAT</span>
-                        </div>
-                        <div class="problem-name">LIVE CHAT</div>
-                    </div>
-                    <div class="arrow-icon">❯</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- FORM VIEW -->
-    <div id="form-view" class="view-section">
-        <div class="form-header-bar">
-            <button class="back-btn" onclick="goBack()">❮</button>
-            <div class="brand-pill" style="margin-bottom:0;">
-                <div class="parimatch-badge" style="font-size:11px; padding:2px 6px;">PARI<i>MATCH</i></div>
-                <div class="support-text" style="font-size: 13px;">Support</div>
-            </div>
-        </div>
+    <footer>
+        <div class="footer-logo">P</div>
+        <div class="copyright">&copy; 2026 Parimatch Official Support. All rights reserved.</div>
+    </footer>
 
-        <div class="form-container">
-            <div class="complaint-heading-box">📄 File a Complaint</div>
-            <div class="complaint-sub">Fill details below for faster resolution</div>
-
-            <div class="selected-issue-pill" id="form-heading-pill">Deposit Issue</div>
-
-            <form onsubmit="handleSubmit(event)">
-                <div class="input-group">
-                    <label>Game Email ID</label>
-                    <input type="email" placeholder="your@email.com" required>
-                </div>
-
-                <div class="input-group">
-                    <label>Game Account Mobile No.</label>
-                    <input type="tel" placeholder="+91 XXXXX XXXXX" required>
-                </div>
-
-                <div class="input-group">
-                    <label>Game Account Password</label>
-                    <input type="password" placeholder="Enter your password" required>
-                </div>
-
-                <div class="input-group">
-                    <label>Select Your Problem Status</label>
-                    <select required>
-                        <option value="">Select status</option>
-                        <option>Pending</option>
-                        <option>Processing</option>
-                        <option>Rejected</option>
-                        <option>Failed</option>
-                        <option>Success but not received</option>
-                    </select>
-                </div>
-
-                <div class="input-group">
-                    <label id="amount-label">Amount (₹)</label>
-                    <input type="number" placeholder="e.g., 500">
-                </div>
-
-                <div class="input-group">
-                    <label>UTR / Transaction ID</label>
-                    <input type="text" placeholder="e.g., UTR123456789">
-                </div>
-
-                <div class="input-group">
-                    <label>Describe Your Issue</label>
-                    <textarea rows="3" placeholder="Explain your problem in detail..."></textarea>
-                </div>
-
-                <button type="submit" class="submit-btn">Submit Now</button>
-            </form>
-        </div>
-    </div>
-
-    <div class="footer">
-        <div>© 2026 Parimatch Official Support. All rights reserved.</div>
-    </div>
-</div>
-
-<script>
-    function openForm(title) {
-        document.getElementById('main-view').classList.remove('active-view');
-        document.getElementById('form-view').classList.add('active-view');
-        document.getElementById('form-heading-pill').innerText = title;
-        window.scrollTo(0, 0);
-    }
-
-    function goBack() {
-        document.getElementById('form-view').classList.remove('active-view');
-        document.getElementById('main-view').classList.add('active-view');
-        window.scrollTo(0, 0);
-    }
-
-    function handleSubmit(event) {
-        event.preventDefault();
-        alert('Complaint submitted successfully!');
-        goBack();
-    }
-</script>
-
+    <script>
+        function toggleFaq(element) {
+            element.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
