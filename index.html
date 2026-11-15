@@ -181,6 +181,7 @@
             border: 1.5px solid #d4ff00;
             border-radius: 20px;
             padding: 16px 12px;
+            margin-bottom: 20px;
         }
 
         .section-header {
@@ -224,7 +225,6 @@
             gap: 12px;
         }
 
-        /* Exact Match Small Yellow Box Design */
         .problem-icon-wrapper {
             background-color: #d4ff00;
             border-radius: 6px;
@@ -266,168 +266,525 @@
             font-size: 16px;
             font-weight: bold;
         }
+
+        /* FAQ Section */
+        .faq-wrapper {
+            background-color: #121212;
+            border: 1.5px solid #27272a;
+            border-radius: 20px;
+            padding: 16px 12px;
+            margin-bottom: 20px;
+        }
+
+        .faq-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #d4ff00;
+            font-size: 15px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .faq-item {
+            background-color: #1c1c1e;
+            border-radius: 12px;
+            margin-bottom: 8px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 12px 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .faq-answer {
+            padding: 0 14px 12px 14px;
+            font-size: 11px;
+            color: #9ca3af;
+            display: none;
+            line-height: 1.4;
+            border-top: 1px solid #27272a;
+            padding-top: 10px;
+        }
+
+        /* Views / Modals */
+        .view-section {
+            display: none;
+        }
+
+        .active-view {
+            display: block;
+        }
+
+        /* Form Styling */
+        .form-header-bar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .back-btn {
+            background: #d4ff00;
+            color: #000;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .form-container {
+            background-color: #121212;
+            border: 1.5px solid #d4ff00;
+            border-radius: 20px;
+            padding: 20px 16px;
+        }
+
+        .form-title-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #1c1c1e;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 16px;
+            border-left: 4px solid #d4ff00;
+        }
+
+        .form-title-box h3 {
+            font-size: 14px;
+            color: #d4ff00;
+            font-weight: 800;
+        }
+
+        .form-title-box p {
+            font-size: 10px;
+            color: #9ca3af;
+        }
+
+        .input-group {
+            margin-bottom: 14px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 11px;
+            font-weight: 700;
+            color: #d4ff00;
+            margin-bottom: 6px;
+        }
+
+        .input-group input, .input-group select {
+            width: 100%;
+            background-color: #1c1c1e;
+            border: 1px solid #27272a;
+            border-radius: 8px;
+            padding: 10px 12px;
+            color: #fff;
+            font-size: 12px;
+            outline: none;
+        }
+
+        .input-group input:focus, .input-group select:focus {
+            border-color: #d4ff00;
+        }
+
+        .security-note {
+            font-size: 9px;
+            color: #6b7280;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background-color: #d4ff00;
+            color: #000;
+            font-weight: 900;
+            font-size: 13px;
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        .response-time {
+            text-align: center;
+            font-size: 10px;
+            color: #9ca3af;
+            margin-top: 10px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            font-size: 9px;
+            color: #6b7280;
+            padding: 10px 0 20px 0;
+            line-height: 1.4;
+        }
+
+        .footer span {
+            color: #d4ff00;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 6px;
+            font-weight: 700;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <!-- Top Header -->
-    <div class="top-header">
-        <div class="brand-pill">
-            <div class="parimatch-logo-text">PARI<i>MATCH</i></div>
-            <div class="support-text">Support</div>
+
+    <!-- MAIN VIEW (Home Support Dashboard) -->
+    <div id="main-view" class="view-section active-view">
+        <!-- Top Header -->
+        <div class="top-header">
+            <div class="brand-pill">
+                <div class="parimatch-logo-text">PARI<i>MATCH</i></div>
+                <div class="support-text">Support</div>
+            </div>
+            <div class="sub-tagline">Fast • Secure • Trusted Help</div>
         </div>
-        <div class="sub-tagline">Fast • Secure • Trusted Help</div>
+
+        <!-- Hero Banner -->
+        <div class="hero-banner">
+            <div class="hero-top">
+                <div>
+                    <div class="hero-brand-title">
+                        <div class="mini-logo"></div>
+                        <span>PariMatch</span>
+                    </div>
+                    <div class="hero-title-main">SUPPORT CENTER</div>
+                    <p class="hero-desc">We're here to help you. Fast, safe & reliable support.</p>
+                </div>
+                <div class="headset-avatar">🎧</div>
+            </div>
+
+            <div class="hero-grid">
+                <div>
+                    <div class="hero-icon-box">🎮</div>
+                    <span>GAME PROBLEM</span>
+                </div>
+                <div>
+                    <div class="hero-icon-box">💳</div>
+                    <span>DEPOSIT & WITHDRAWAL</span>
+                </div>
+                <div>
+                    <div class="hero-icon-box">❓</div>
+                    <span>FAQ</span>
+                </div>
+                <div>
+                    <div class="hero-icon-box" onclick="openForm('Live Chat')">💬</div>
+                    <span>LIVE CHAT</span>
+                </div>
+            </div>
+
+            <div class="hero-footer-tags">
+                <span>✔ FAST</span>
+                <span>• RELIABLE</span>
+                <span>• 24/7 SUPPORT</span>
+            </div>
+        </div>
+
+        <!-- Select Problems Box -->
+        <div class="problems-wrapper">
+            <div class="section-header">SELECT PROBLEMS</div>
+
+            <div class="problem-item" onclick="openForm('Deposit Problem')">
+                <div class="problem-inner">
+                    <div class="problem-left">
+                        <div class="problem-icon-wrapper">
+                            <span class="main-sym">💰</span>
+                            <span class="sub-label">DEPOSIT</span>
+                        </div>
+                        <div class="problem-name">DEPOSIT PROBLEM</div>
+                    </div>
+                    <div class="arrow-icon">❯</div>
+                </div>
+            </div>
+
+            <div class="problem-item" onclick="openForm('Withdrawal Problem')">
+                <div class="problem-inner">
+                    <div class="problem-left">
+                        <div class="problem-icon-wrapper">
+                            <span class="main-sym">💳</span>
+                            <span class="sub-label">WITHDRAW</span>
+                        </div>
+                        <div class="problem-name">WITHDRAWAL PROBLEM</div>
+                    </div>
+                    <div class="arrow-icon">❯</div>
+                </div>
+            </div>
+
+            <div class="problem-item" onclick="openForm('Withdrawal Unlock')">
+                <div class="problem-inner">
+                    <div class="problem-left">
+                        <div class="problem-icon-wrapper">
+                            <span class="main-sym">🔓</span>
+                            <span class="sub-label">UNLOCK</span>
+                        </div>
+                        <div class="problem-name">WITHDRAWAL UNLOCK</div>
+                    </div>
+                    <div class="arrow-icon">❯</div>
+                </div>
+            </div>
+
+            <div class="problem-item" onclick="openForm('Bonus Problem')">
+                <div class="problem-inner">
+                    <div class="problem-left">
+                        <div class="problem-icon-wrapper">
+                            <span class="main-sym">🎁</span>
+                            <span class="sub-label">BONUS</span>
+                        </div>
+                        <div class="problem-name">BONUS PROBLEM</div>
+                    </div>
+                    <div class="arrow-icon">❯</div>
+                </div>
+            </div>
+
+            <div class="problem-item" onclick="openForm('KYC Problem')">
+                <div class="problem-inner">
+                    <div class="problem-left">
+                        <div class="problem-icon-wrapper">
+                            <span class="main-sym">🪪</span>
+                            <span class="sub-label">KYC</span>
+                        </div>
+                        <div class="problem-name">KYC PROBLEM</div>
+                    </div>
+                    <div class="arrow-icon">❯</div>
+                </div>
+            </div>
+
+            <div class="problem-item" onclick="openForm('Bank Statement Problem')">
+                <div class="problem-inner">
+                    <div class="problem-left">
+                        <div class="problem-icon-wrapper">
+                            <span class="main-sym">📄</span>
+                            <span class="sub-label">STATEMENT</span>
+                        </div>
+                        <div class="problem-name">BANK STATEMENT PROBLEM</div>
+                    </div>
+                    <div class="arrow-icon">❯</div>
+                </div>
+            </div>
+
+            <div class="problem-item" onclick="openForm('Live Chat')">
+                <div class="problem-inner">
+                    <div class="problem-left">
+                        <div class="problem-icon-wrapper">
+                            <span class="main-sym">🎧</span>
+                            <span class="sub-label">CHAT</span>
+                        </div>
+                        <div class="problem-name">LIVE CHAT</div>
+                    </div>
+                    <div class="arrow-icon">❯</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Quick Answers -->
+        <div class="faq-wrapper">
+            <div class="faq-header">
+                <span>❓</span> Quick Answers
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Why is my deposit not showing in game balance? <span>▼</span>
+                </div>
+                <div class="faq-answer">
+                    Deposits usually reflect within 1-3 minutes. If delayed, check UTR status with your bank & file complaint via "COMPLAIN NOW" button.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    How long does withdrawal take? <span>▼</span>
+                </div>
+                <div class="faq-answer">
+                    UPI withdrawals: 5-15 mins | Bank Transfer: 1-24 hrs. Delays? Share your request ID via support form.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Is my password safe here? <span>▼</span>
+                </div>
+                <div class="faq-answer">
+                    Yes! We use end-to-end encryption. Passwords are only used to verify your account & never stored in plain text.
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Hero Banner -->
-    <div class="hero-banner">
-        <div class="hero-top">
-            <div>
-                <div class="hero-brand-title">
-                    <div class="mini-logo"></div>
-                    <span>PariMatch</span>
+    <!-- FORM VIEW (Dynamic Support Form) -->
+    <div id="form-view" class="view-section">
+        <div class="form-header-bar">
+            <button class="back-btn" onclick="goBack()">❮</button>
+            <div class="parimatch-logo-text">PARI<i>MATCH</i> Support</div>
+        </div>
+
+        <div class="form-container">
+            <div class="form-title-box">
+                <div>
+                    <h3 id="form-heading">Withdrawal Problem</h3>
+                    <p>Fill details below for faster resolution</p>
                 </div>
-                <div class="hero-title-main">SUPPORT CENTER</div>
-                <p class="hero-desc">We're here to help you. Fast, safe & reliable support.</p>
             </div>
-            <div class="headset-avatar">🎧</div>
-        </div>
 
-        <div class="hero-grid">
-            <div>
-                <div class="hero-icon-box">🎮</div>
-                <span>GAME PROBLEM</span>
-            </div>
-            <div>
-                <div class="hero-icon-box">💳</div>
-                <span>DEPOSIT & WITHDRAWAL</span>
-            </div>
-            <div>
-                <div class="hero-icon-box">❓</div>
-                <span>FAQ</span>
-            </div>
-            <div>
-                <div class="hero-icon-box">💬</div>
-                <span>LIVE CHAT</span>
-            </div>
-        </div>
+            <form onsubmit="handleSubmit(event)">
+                <div class="input-group">
+                    <label>Game Email ID</label>
+                    <input type="email" placeholder="your@email.com" required>
+                </div>
 
-        <div class="hero-footer-tags">
-            <span>✔ FAST</span>
-            <span>• RELIABLE</span>
-            <span>• 24/7 SUPPORT</span>
+                <div class="input-group">
+                    <label>Game Account Mobile No.</label>
+                    <input type="tel" placeholder="+91 XXXXX XXXXX" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Game Account Password</label>
+                    <input type="password" placeholder="Enter your password" required>
+                </div>
+
+                <div class="input-group" id="status-group">
+                    <label>Select Your Problem Status</label>
+                    <select>
+                        <option value="">Select status</option>
+                        <option>Pending</option>
+                        <option>Processing</option>
+                        <option>Rejected</option>
+                        <option>Failed</option>
+                        <option>Success but not received</option>
+                    </select>
+                </div>
+
+                <div class="input-group" id="amount-group">
+                    <label>Amount (₹)</label>
+                    <input type="number" placeholder="e.g., 1000">
+                </div>
+
+                <div class="input-group" id="method-group">
+                    <label>Withdrawal Method</label>
+                    <select>
+                        <option value="">Select method</option>
+                        <option>UPI</option>
+                        <option>Bank Transfer</option>
+                        <option>E-Wallet</option>
+                    </select>
+                </div>
+
+                <!-- Extra file upload container for Bank Statement -->
+                <div class="input-group" id="statement-group" style="display: none;">
+                    <label>Upload Bank Statement (PDF / Image)</label>
+                    <input type="file" accept="image/*,.pdf" style="padding: 6px;">
+                </div>
+
+                <div class="security-note">
+                    🔒 Your data is encrypted & never shared
+                </div>
+
+                <button type="submit" class="submit-btn" id="submit-btn-text">Submit Now</button>
+                <div class="response-time">Average response time: <strong>2-5 minutes</strong></div>
+            </form>
         </div>
     </div>
 
-    <!-- Select Problems Box -->
-    <div class="problems-wrapper">
-        <div class="section-header">SELECT PROBLEMS</div>
-
-        <!-- Deposit Problem -->
-        <div class="problem-item" onclick="openSupport('Deposit Problem')">
-            <div class="problem-inner">
-                <div class="problem-left">
-                    <div class="problem-icon-wrapper">
-                        <span class="main-sym">💰</span>
-                        <span class="sub-label">DEPOSIT</span>
-                    </div>
-                    <div class="problem-name">DEPOSIT PROBLEM</div>
-                </div>
-                <div class="arrow-icon">❯</div>
-            </div>
-        </div>
-
-        <!-- Withdrawal Problem -->
-        <div class="problem-item" onclick="openSupport('Withdrawal Problem')">
-            <div class="problem-inner">
-                <div class="problem-left">
-                    <div class="problem-icon-wrapper">
-                        <span class="main-sym">💳</span>
-                        <span class="sub-label">WITHDRAW</span>
-                    </div>
-                    <div class="problem-name">WITHDRAWAL PROBLEM</div>
-                </div>
-                <div class="arrow-icon">❯</div>
-            </div>
-        </div>
-
-        <!-- Withdrawal Unlock -->
-        <div class="problem-item" onclick="openSupport('Withdrawal Unlock')">
-            <div class="problem-inner">
-                <div class="problem-left">
-                    <div class="problem-icon-wrapper">
-                        <span class="main-sym">🔓</span>
-                        <span class="sub-label">UNLOCK</span>
-                    </div>
-                    <div class="problem-name">WITHDRAWAL UNLOCK</div>
-                </div>
-                <div class="arrow-icon">❯</div>
-            </div>
-        </div>
-
-        <!-- Bonus Problem -->
-        <div class="problem-item" onclick="openSupport('Bonus Problem')">
-            <div class="problem-inner">
-                <div class="problem-left">
-                    <div class="problem-icon-wrapper">
-                        <span class="main-sym">🎁</span>
-                        <span class="sub-label">BONUS</span>
-                    </div>
-                    <div class="problem-name">BONUS PROBLEM</div>
-                </div>
-                <div class="arrow-icon">❯</div>
-            </div>
-        </div>
-
-        <!-- KYC Problem -->
-        <div class="problem-item" onclick="openSupport('KYC Problem')">
-            <div class="problem-inner">
-                <div class="problem-left">
-                    <div class="problem-icon-wrapper">
-                        <span class="main-sym">🪪</span>
-                        <span class="sub-label">KYC</span>
-                    </div>
-                    <div class="problem-name">KYC PROBLEM</div>
-                </div>
-                <div class="arrow-icon">❯</div>
-            </div>
-        </div>
-
-        <!-- Bank Statement Problem -->
-        <div class="problem-item" onclick="openSupport('Bank Statement Problem')">
-            <div class="problem-inner">
-                <div class="problem-left">
-                    <div class="problem-icon-wrapper">
-                        <span class="main-sym">📄</span>
-                        <span class="sub-label">STATEMENT</span>
-                    </div>
-                    <div class="problem-name">BANK STATEMENT PROBLEM</div>
-                </div>
-                <div class="arrow-icon">❯</div>
-            </div>
-        </div>
-
-        <!-- Live Chat -->
-        <div class="problem-item" onclick="openSupport('Live Chat')">
-            <div class="problem-inner">
-                <div class="problem-left">
-                    <div class="problem-icon-wrapper">
-                        <span class="main-sym">🎧</span>
-                        <span class="sub-label">CHAT</span>
-                    </div>
-                    <div class="problem-name">LIVE CHAT</div>
-                </div>
-                <div class="arrow-icon">❯</div>
-            </div>
+    <!-- Footer -->
+    <div class="footer">
+        <div>© 2026 Parimatch Official Support. All rights reserved.</div>
+        <div>This is a support portal only. Not for betting/gambling.</div>
+        <div class="footer-links">
+            <span>Home</span>
+            <span>Privacy Policy</span>
+            <span>Terms</span>
         </div>
     </div>
+
 </div>
 
 <script>
-    function openSupport(type) {
-        alert("Selected: " + type);
-        // Agar aapko kisi doosre page par ya chat link par bhej na ho, toh window.location.href = "link"; yahan laga sakte hain.
+    function openForm(title) {
+        document.getElementById('main-view').classList.remove('active-view');
+        document.getElementById('form-view').classList.add('active-view');
+        document.getElementById('form-heading').innerText = title;
+
+        // Customise fields based on option selected
+        const statusGroup = document.getElementById('status-group');
+        const amountGroup = document.getElementById('amount-group');
+        const methodGroup = document.getElementById('method-group');
+        const statementGroup = document.getElementById('statement-group');
+        const submitBtnText = document.getElementById('submit-btn-text');
+
+        if (title === 'Live Chat') {
+            statusGroup.style.display = 'none';
+            amountGroup.style.display = 'none';
+            methodGroup.style.display = 'none';
+            statementGroup.style.display = 'none';
+            submitBtnText.innerText = 'Start Live Chat';
+        } else if (title === 'Bank Statement Problem') {
+            statusGroup.style.display = 'block';
+            amountGroup.style.display = 'none';
+            methodGroup.style.display = 'none';
+            statementGroup.style.display = 'block';
+            submitBtnText.innerText = 'Submit Statement';
+        } else {
+            statusGroup.style.display = 'block';
+            amountGroup.style.display = 'block';
+            methodGroup.style.display = 'block';
+            statementGroup.style.display = 'none';
+            submitBtnText.innerText = 'Submit Now';
+        }
+
+        window.scrollTo(0, 0);
+    }
+
+    function goBack() {
+        document.getElementById('form-view').classList.remove('active-view');
+        document.getElementById('main-view').classList.add('active-view');
+        window.scrollTo(0, 0);
+    }
+
+    function toggleFaq(element) {
+        const answer = element.nextElementSibling;
+        const arrow = element.querySelector('span');
+        if (answer.style.display === 'block') {
+            answer.style.display = 'none';
+            arrow.innerText = '▼';
+        } else {
+            answer.style.display = 'block';
+            arrow.innerText = '▲';
+        }
+    }
+
+    function handleSubmit(event) {
+        event.preventDefault();
+        alert('Support request submitted successfully! We will contact you shortly.');
+        goBack();
     }
 </script>
 
